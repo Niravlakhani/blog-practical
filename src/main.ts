@@ -20,10 +20,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('blog', app, document);
   const port = process.env.PORT || 3010;
-  console.log(
-    'process.env.REACT_APP_PUBLIC_URL',
-    process.env.REACT_APP_PUBLIC_URL,
-  );
+
   app.use(
     cors({
       origin: process.env.REACT_APP_PUBLIC_URL,

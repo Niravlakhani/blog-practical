@@ -19,9 +19,12 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('blog', app, document);
   const port = process.env.PORT || 3010;
-
+  console.log(
+    'process.env.REACT_APP_PUBLIC_URL',
+    process.env.REACT_APP_PUBLIC_URL,
+  );
   app.enableCors({
-    origin: 'https://blog-backend-v1.onrender.com', // Change this to the origin of your frontend application
+    origin: process.env.REACT_APP_PUBLIC_URL, // Change this to the origin of your frontend application
     credentials: false, // Optional: Enable cookies and authentication headers
   });
   await app.listen(port);

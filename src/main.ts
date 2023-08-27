@@ -21,7 +21,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3010;
 
   app.enableCors({
-    origin: 'http://localhost:3000', // Change this to the origin of your frontend application
+    origin: 'https://blog-backend-v1.onrender.com', // Change this to the origin of your frontend application
     credentials: false, // Optional: Enable cookies and authentication headers
   });
   await app.listen(port);

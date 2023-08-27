@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import * as multer from 'multer';
+const cors = require('cors');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -23,10 +24,11 @@ async function bootstrap() {
     'process.env.REACT_APP_PUBLIC_URL',
     process.env.REACT_APP_PUBLIC_URL,
   );
-  app.enableCors({
-    origin: process.env.REACT_APP_PUBLIC_URL, // Change this to the origin of your frontend application
-    credentials: false, // Optional: Enable cookies and authentication headers
-  });
+  app.use(
+    cors({
+      origin: process.env.REACT_APP_PUBLIC_URL,
+    }),
+  );
   await app.listen(port);
 }
 bootstrap();
